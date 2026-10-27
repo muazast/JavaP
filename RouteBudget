@@ -1,0 +1,384 @@
+import java.util.Scanner;
+
+public class RouteBudget {
+
+    //ilmamasroor930@gmail.com
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println();
+        System.out.println("                         Welcome to Route Budget Corp");
+        System.out.println();
+        System.out.println("We are very pleased that you chose us for your budget management");
+        System.out.println("We will help you find a suitable travelling option");
+        System.out.println();
+
+        System.out.println("Q1 - Number of days you will be travelling per month?");
+        int numofdaystravel = scanner.nextInt();
+
+        while (numofdaystravel < 1 || numofdaystravel > 31) {
+            System.out.println("Please enter days between 1 and 31");
+            numofdaystravel = scanner.nextInt();
+        }
+
+        System.out.println("Q2 - How much money are you willing to spend per month?");
+        double willingtospendmoney = scanner.nextDouble();
+
+        while (willingtospendmoney <= 0) {
+            System.out.println("Please enter a budget greater than zero");
+            willingtospendmoney = scanner.nextDouble();
+        }
+
+        System.out.println("Q3 - Maximum travelling time per day (in minutes)");
+        double willingtospendtime = scanner.nextDouble();
+
+        while (willingtospendtime <= 0) {
+            System.out.println("Please enter a time greater than zero");
+            willingtospendtime = scanner.nextDouble();
+        }
+
+        boolean confirm = false;
+
+        while (confirm == false) {
+
+            double willingtospendtimeinhours = willingtospendtime / 60;
+
+            System.out.println();
+            System.out.println("You will be travelling " + numofdaystravel + " days per month");
+            System.out.println("Your monthly budget is Rs. " + willingtospendmoney);
+            System.out.println("Your maximum travelling time is " + willingtospendtimeinhours + " hours per day");
+
+            System.out.println();
+
+            System.out.println("Type yes to confirm or change to edit your details");
+
+            String valcorrect = scanner.next();
+
+            if (valcorrect.equals("yes")) {
+                confirm = true;
+
+            } else if (valcorrect.equals("change")) {
+
+                System.out.println("Press 1 to change travelling days");
+                System.out.println("Press 2 to change budget");
+                System.out.println("Press 3 to change travelling time");
+                System.out.println("Press 4 to change all details");
+
+                int choicechange = scanner.nextInt();
+
+                switch (choicechange) {
+
+                    case 1:
+                        System.out.println("Enter travelling days per month");
+                        numofdaystravel = scanner.nextInt();
+
+                        while (numofdaystravel < 1 || numofdaystravel > 31) {
+                            System.out.println("Enter days between 1 and 31");
+                            numofdaystravel = scanner.nextInt();
+                        }
+                        break;
+
+                    case 2:
+                        System.out.println("Enter your monthly budget");
+                        willingtospendmoney = scanner.nextDouble();
+
+                        while (willingtospendmoney <= 0) {
+                            System.out.println("Enter a budget greater than zero");
+                            willingtospendmoney = scanner.nextDouble();
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("Enter maximum travelling time in minutes");
+                        willingtospendtime = scanner.nextDouble();
+
+                        while (willingtospendtime <= 0) {
+                            System.out.println("Enter a time greater than zero");
+                            willingtospendtime = scanner.nextDouble();
+                        }
+                        break;
+
+                    case 4:
+                        System.out.println("Enter travelling days per month");
+                        numofdaystravel = scanner.nextInt();
+
+                        while (numofdaystravel < 1 || numofdaystravel > 31) {
+                            System.out.println("Enter days between 1 and 31");
+                            numofdaystravel = scanner.nextInt();
+                        }
+
+                        System.out.println("Enter your monthly budget");
+                        willingtospendmoney = scanner.nextDouble();
+
+                        while (willingtospendmoney <= 0) {
+                            System.out.println("Enter a budget greater than zero");
+                            willingtospendmoney = scanner.nextDouble();
+                        }
+
+                        System.out.println("Enter maximum travelling time in minutes");
+                        willingtospendtime = scanner.nextDouble();
+
+                        while (willingtospendtime <= 0) {
+                            System.out.println("Enter a time greater than zero");
+                            willingtospendtime = scanner.nextDouble();
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Please enter a valid choice");
+                }
+
+            } else {
+                System.out.println("Please type yes or change");
+            }
+        }
+
+        System.out.println("Are you a student type (yes/no)");
+
+//        String stuverify = scanner.next();
+
+        boolean stuver = false;
+
+        String stuverify="";
+
+        while(!stuver){
+
+             stuverify = scanner.next();
+
+            if(stuverify.equals("yes") || stuverify.equals("Yes") || stuverify.equals("No") || stuverify.equals("no")) {
+                stuver = true;
+                break;
+            } else {
+                System.out.println("Please enter either yes or no");
+            }
+
+
+        }
+
+        System.out.println("Thanks for confirmming that you are a student");
+
+        System.out.println();
+        System.out.println("Great! Your details are confirmed.");
+
+        // current travel mode
+        String travelmode = "";
+        boolean modechosen = false;
+
+        while (modechosen == false) {
+
+            System.out.println("Which option do you currently use?");
+            System.out.println("1. Bus");
+            System.out.println("2. Train");
+            System.out.println("3. Cab");
+
+            int travelchoice = scanner.nextInt();
+
+            if (travelchoice == 1) {
+                travelmode = "Bus";
+                modechosen = true;
+            } else if (travelchoice == 2) {
+                travelmode = "Train";
+                modechosen = true;
+            } else if (travelchoice == 3) {
+                travelmode = "Cab";
+                modechosen = true;
+            } else {
+                System.out.println("Invalid option, try again");
+            }
+        }
+
+        System.out.println("You selected " + travelmode);
+
+        System.out.println("How much do you spend on your daily round trip?");
+        double perroundtrip = scanner.nextDouble();
+
+        while (perroundtrip <= 0) {
+            System.out.println("Enter a cost greater than zero");
+            perroundtrip = scanner.nextDouble();
+        }
+
+        double roundtripcostpermonth = perroundtrip * numofdaystravel;
+
+        System.out.println("You spend Rs. " + roundtripcostpermonth + " per month on travelling");
+
+        System.out.println("How much time does your daily round trip take (minutes)?");
+        int timetaken = scanner.nextInt();
+
+        while (timetaken <= 0) {
+            System.out.println("Enter a time greater than zero");
+            timetaken = scanner.nextInt();
+        }
+
+        System.out.println("You spend " + timetaken + " minutes per day travelling");
+
+        boolean currentfits = false;
+
+        if (roundtripcostpermonth <= willingtospendmoney && timetaken <= willingtospendtime) {
+            currentfits = true;
+            System.out.println("Your current option meets your conditions");
+        } else {
+            System.out.println("Your current option does not meet all your conditions");
+        }
+
+        System.out.println();
+        System.out.println("Now we will look at other options for you");
+        System.out.println();
+        System.out.println("---------- Suitable Alternatives ----------");
+
+
+        String bestoption = "";
+        double bestcost = 999999;
+        int besttime = 0;
+        int alternatives = 0;
+
+        // Rapido Bus
+        int rapbuscost = 40;
+        int rapbustime = 70;
+        double monthlycofbusrap = numofdaystravel * rapbuscost;
+
+
+        if (monthlycofbusrap <= willingtospendmoney && rapbustime <= willingtospendtime) {
+            System.out.println("Rapido Bus - Rs. " + monthlycofbusrap + " per month, " + rapbustime + " minutes per day");
+            alternatives = alternatives + 1;
+
+            if (monthlycofbusrap < bestcost) {
+                bestcost = monthlycofbusrap;
+                besttime = rapbustime;
+                bestoption = "Rapido Bus";
+            }
+        }
+
+        // Rapido Cab
+        int rapcabcost = 180;
+        int rapcabtime = 30;
+        double monthlycofcabrap = numofdaystravel * rapcabcost;
+
+        if (monthlycofcabrap <= willingtospendmoney && rapcabtime <= willingtospendtime) {
+            System.out.println("Rapido Cab - Rs. " + monthlycofcabrap + " per month, " + rapcabtime + " minutes per day");
+            alternatives = alternatives + 1;
+
+            if (monthlycofcabrap < bestcost) {
+                bestcost = monthlycofcabrap;
+                besttime = rapcabtime;
+                bestoption = "Rapido Cab";
+            }
+        }
+
+        // Ola Bus
+        int olabuscost = 40;
+        int olabustime = 70;
+        double monthlycofbusola = numofdaystravel * olabuscost;
+
+        if (monthlycofbusola <= willingtospendmoney && olabustime <= willingtospendtime) {
+            System.out.println("Ola Bus - Rs. " + monthlycofbusola + " per month, " + olabustime + " minutes per day");
+            alternatives = alternatives + 1;
+
+            if (monthlycofbusola < bestcost) {
+                bestcost = monthlycofbusola;
+                besttime = olabustime;
+                bestoption = "Ola Bus";
+            }
+        }
+
+        // Ola Cab
+        int olacabcost = 180;
+        int olacabtime = 30;
+        double monthlycofcabola = numofdaystravel * olacabcost;
+
+        if (monthlycofcabola <= willingtospendmoney && olacabtime <= willingtospendtime) {
+            System.out.println("Ola Cab - Rs. " + monthlycofcabola + " per month, " + olacabtime + " minutes per day");
+            alternatives = alternatives + 1;
+
+            if (monthlycofcabola < bestcost) {
+                bestcost = monthlycofcabola;
+                besttime = olacabtime;
+                bestoption = "Ola Cab";
+            }
+        }
+
+        // Uber Bus
+        int uberbuscost = 40;
+        int uberbustime = 70;
+        double monthlycofbusuber = numofdaystravel * uberbuscost;
+
+        if (monthlycofbusuber <= willingtospendmoney && uberbustime <= willingtospendtime) {
+            System.out.println("Uber Bus - Rs. " + monthlycofbusuber + " per month, " + uberbustime + " minutes per day");
+            alternatives = alternatives + 1;
+
+            if (monthlycofbusuber < bestcost) {
+                bestcost = monthlycofbusuber;
+                besttime = uberbustime;
+                bestoption = "Uber Bus";
+            }
+        }
+
+        // Uber Cab
+        int ubercabcost = 180;
+        int ubercabtime = 30;
+        double monthlycofcabuber = numofdaystravel * ubercabcost;
+
+        if (monthlycofcabuber <= willingtospendmoney && ubercabtime <= willingtospendtime) {
+            System.out.println("Uber Cab - Rs. " + monthlycofcabuber + " per month, " + ubercabtime + " minutes per day");
+            alternatives = alternatives + 1;
+
+            if (monthlycofcabuber < bestcost) {
+                bestcost = monthlycofcabuber;
+                besttime = ubercabtime;
+                bestoption = "Uber Cab";
+            }
+        }
+
+        if (alternatives == 0) {
+            System.out.println("No alternative fits your budget and time limit.");
+        }
+
+        // final answer
+        System.out.println();
+        System.out.println("---------- Final Recommendation ----------");
+
+        if (alternatives == 0) {
+
+            if (currentfits == true) {
+                System.out.println("Stay with your current " + travelmode + ". No alternative fits your limits.");
+            } else {
+                System.out.println("Sorry, no option fits both your budget and time limit.");
+            }
+
+        } else {
+
+            if (stuverify.equals("yes") || stuverify.equals("Yes")){
+                double stuoff = bestcost - 50;
+                System.out.println();
+                System.out.println("Best alternative: " + bestoption);
+                System.out.println("Monthly fare: Rs. " + bestcost);
+                System.out.println("Daily travel time: " + besttime + " minutes");
+
+                System.out.println("And sinnce you are a student, we will be giving you a coupon code to redeem while onboarding to get a flat 50rs off");
+                System.out.println();
+
+                System.out.println("And the monthly fare for you will be: Rs. " + stuoff);
+
+            } else {
+                System.out.println("Best alternative: " + bestoption);
+                System.out.println("Monthly fare: Rs. " + bestcost);
+                System.out.println("Daily travel time: " + besttime + " minutes");
+            }
+
+            if (bestcost < roundtripcostpermonth) {
+                double saving = roundtripcostpermonth - bestcost;
+                if (stuverify.equals("yes") || stuverify.equals("Yes")){
+                    System.out.println("You can save Rs. " + (saving+50) + " per month compared with your current " + travelmode + ".");
+                }else {
+                    System.out.println("You can save Rs. " + saving + " per month compared with your current " + travelmode + ".");
+                }
+            } else if (currentfits == true) {
+                System.out.println("Your current " + travelmode + " is already as cheap or cheaper, so staying is also a good choice.");
+            } else {
+                System.out.println("It costs a bit more than your current " + travelmode + ", but your current option breaks your limits.");
+            }
+        }
+
+    }
+}
